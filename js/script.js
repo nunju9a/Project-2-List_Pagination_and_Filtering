@@ -72,7 +72,59 @@ const appendPageLinks = (list) => {
    });
 }
 
-
 appendPageLinks (listOfStudents);                              // Calling appedPageLinks function
 
 
+
+
+
+/***  Still working on exceeds
+// Adding a search bar
+
+let result;
+const searchStudents = document.createElement ('div');                      
+searchStudents.className = "student-search";
+const pageHeader = document.querySelector ('.page-header');
+pageHeader.appendChild(searchStudents);
+
+const searchButton = document.createElement ('button');
+searchStudents.appendChild (searchButton);
+searchButton.textContent = `Search`;
+const inputText = document.createElement ('input');
+searchStudents.appendChild (inputText);
+inputText.setAttribute ('placeholder', "Search for students");
+
+const textInput = document.querySelector ('input');
+const button = document.querySelector ('button');
+
+
+
+// Search Function
+
+const searchInput = (input, list) => {
+   let result = [];
+
+   for (let x =0 ; x < list.length; x++) {
+      list[x].style.display = 'none';
+
+
+      result.push(list[x]);
+
+
+      showPage (result, 1);
+      appendPageLinks (result);
+   }
+}
+
+
+
+button.addEventListener ('click', (e) => {
+   e.preventDefault();
+   searchInput (inputText, listOfStudents);
+} ) ;
+
+button.addEventListener ('keyup', () => {
+   searchInput (inputText, listOfStudents);
+} ) ;
+
+***/
