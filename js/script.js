@@ -51,8 +51,10 @@ const appendPageLinks = (list) => {
       ul.appendChild (li);
       li.appendChild (a);
    }
- 
-  // Listens for page links to be clicked 
+
+   showPage (listOfStudents,1);                                                         // Calls first page of students when first loaded
+
+  // Listens for page links to be clicked and takes you to each page with new list of 10 students
    ul.addEventListener ('click', (e) => {
       const link = e.target;
       let pageNumber;
@@ -66,11 +68,11 @@ const appendPageLinks = (list) => {
          link.className = "active";                                 // Makes current link active
          
       } 
-      showPage (list,pageNumber);                                // Calling showPage function
+      showPage (listOfStudents,pageNumber);                       // Calling showPage function
    });
 }
 
 
-appendPageLinks (listOfStudents);
+appendPageLinks (listOfStudents);                              // Calling appedPageLinks function
 
 
