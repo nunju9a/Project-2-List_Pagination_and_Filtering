@@ -64,10 +64,9 @@ const appendPageLinks = (list) => {
 showPage (listOfStudents,1);                                   // Calls first page of students when first loaded
 appendPageLinks (listOfStudents);                             // Calling appendPageLinks function
 
-/***  Code below still not totally working for exceeds
+  
 
 // Adding a search bar
-let searchResults;
 const searchStudents = document.createElement ('div');                                               // Creating div for search            
 searchStudents.className = "student-search";                                                        // Giving Class Name
 const pageHeader = document.querySelector ('.page-header');
@@ -80,32 +79,69 @@ const inputText = document.createElement ('input');                             
 searchStudents.appendChild (inputText);                                                     // Appending text box to search
 inputText.setAttribute ('placeholder', "Search for students");                             // Puttinng "Search for students" as placeholder
 
-const studentDetails = document.getElementsByClassName ('student-details');
+const studentDetails = document.getElementsByClassName ('student-details');              // Storing the class of 'student-details'
 
-const noResults = document.createElement ('p');
-searchStudents.appendChild(noResults);
+const noResults = document.createElement ('p');                                        // Creating p tag
+searchStudents.appendChild(noResults); 
+noResults.textContent = '';
 
-const textInput = document.querySelector ('input');
-const button = document.querySelector ('button');
+let searchResults = []; 
+
+
+
+// Appending to search div
+
+//const textInput = document.querySelector ('input');
+//const button = document.querySelector ('button');
 
 // Search Function
 const searchInput = () => {
-  /// let result = document.querySelectorAll('h3');
-   if (inputText.value.length === 0) {
-      for (let x = 0; x < listOfStudents.length; x++) {
+   for (let x = 0; x < listOfStudents.length; x++) {
+      if (listOfStudents[x].textContent.includes(inputText.value)) {
+         listOfStudents[x].style.display = "block";
          searchResults.push(listOfStudents[x]);
-      }
-   } else {
-      for (let x = 0; x < listOfStudents; x++) {
-         if (studentDetails[x].textContent.toLowerCase().includes(inputText.value.toLowerCase())) {
-            searchResults.push(listOfStudents[x]);
+      } else {
+         listOfStudents[x].style.display = "none";
+
          }
-      }
    }
 }
 // Adding click eventListener for search button
 searchButton.addEventListener ('click', (e) => {
-  noResults.textContent = '';
+  searchInput();
+  if (searchResults.length === 0) {
+   noResults.textContent = `No results have been found`;
+}
+} ) ;
+
+searchButton.addEventListener ('keyup', (e) => {
+   searchInput();
+   if (searchResults.length === 0) {
+      noResults.textContent = `No results have been found`;
+   }
+ } ) ;
+
+    //
+   //const page = document.querySelector('.page');
+   //const pagination = document.querySelector('.pagination');
+  // page.removeChild(pagination);
+ 
+   //for (let x = 0; x < listOfStudents; x++) {
+      //listOfStudents[x].style.display = 'none';
+  // }
+   //showPage (searchResults, 1);
+  // appendPageLinks (searchResults);
+ 
+  // if (searchResults.length === 0) {
+     // noResults.textContent = `No results have been found.`
+  // }
+ 
+
+ //appendPageLinks(searchResults);
+
+
+ 
+ /*** noResults.textContent = '';
   searchResults = [];
   searchInput();
   const page = document.querySelector('.page');
@@ -118,7 +154,7 @@ searchButton.addEventListener ('click', (e) => {
   showPage (searchResults, 1);
   appendPageLinks (searchResults);
 
-  if (searchResults.length === undefined) {
+  if (searchResults.length === 0) {
      noResults.textContent = `No results have been found.`
   }
 
