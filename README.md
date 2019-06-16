@@ -1,6 +1,8 @@
 # Techdegree-Project2
 This is my Project 2 - List Pagination and Filtering.
-Taking a list of 54 students and condensing the list to only show 10 students per page. The showPage function was pretty simple, but I did struggle with the appendPageLinks function. I got it down by taking is step by step between the detailed instructions and the project guide pdf.
+Taking a list of 54 students and condensing the list to only show 10 students per page. The showPage function was pretty simple, but I did struggle with the appendPageLinks function. I got it down by taking is step by step between the detailed instructions and the project guide pdf. 
+
+All code here was done through javascript, dynamically manipulating the dom.
 
 I am aiming for exceeds, as I have added a search bar which returns matches, condenses reults to 10 per page (if applicable), and also returns a message of no results if there are no matches. It was definetely a little tricky getting down where I needed to call the showPage and appendPageLinks functions here.
 
