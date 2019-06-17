@@ -64,12 +64,8 @@ const appendPageLinks = (list) => {
    });
 }
 
-
 showPage (listOfStudents,1);                             // Calls first page of students when page originally loads
 appendPageLinks (listOfStudents);                       // Calling appendPageLinks function
-
-
-// ATTEMPTING EXTRA CREDIT BELOW
 
 
 // Adding a search bar with input field
@@ -88,9 +84,10 @@ searchStudents.appendChild(noResults);                           // Appending no
 noResults.textContent = '';                                     // Storing empty string as value in noResults
 let searchResults = [];                                        // Creating empty array for search results
 
+
 // Search Function that compares the input of the search bar with the student list, then displays results
 const searchInput = () => {
-   
+   searchResults = [];
    // Looping through student list
    for (let x = 0; x < listOfStudents.length; x++) {
       //Conditional statement to test the value of each student and see if it includes the search input value                                      
@@ -112,13 +109,15 @@ searchButton.addEventListener ('click', (e) => {
   // Testing to see if the search function returned no matches
   if (searchResults.length === 0) {
    noResults.textContent = `No results have been found`;       // If the searchResults array is empty, print "no results" message
+}else {
+   noResults.textContent = '';
 }
 showPage(searchResults, 1);                                  // Calls showPage function with searchResults as argument
 appendPageLinks(searchResults);                             // Calls appendPageLinks function with searcResults as argument
 } ) ;
 
 // Adding 'keyup' eventListener for search button which calls the search function and displays results 
-searchButton.addEventListener ('keyup', (e) => {
+inputText.addEventListener ('keyup', (e) => {
    searchInput();
    const page = document.querySelector('.page');
    const pagination = document.querySelector('.pagination');
@@ -126,8 +125,9 @@ searchButton.addEventListener ('keyup', (e) => {
    // Testing to see if the search function returned no matches
    if (searchResults.length === 0) {
     noResults.textContent = `No results have been found`;       // If the searchResults array is empty, print "no results" message
- }
+ } else {
+   noResults.textContent = '';
+}
  showPage(searchResults, 1);                                  // Calls showPage function with searchResults as argument
  appendPageLinks(searchResults);                             // Calls appendPageLinks function with searcResults as argument
-
  } ) ;
